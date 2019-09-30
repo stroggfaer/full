@@ -33,7 +33,7 @@ export class EmployeePageComponent implements OnInit {
                     () => this.router.navigate(['/employee'])
                 )
         }
-        return false
+
     }
 
 }

@@ -32,7 +32,7 @@ export class DepartmentPageComponent implements OnInit {
                     () => this.router.navigate(['/'])
                 )
         }
-        return false
+
     }
 
 
