@@ -1,0 +1,30 @@
+<h3 class="title">Employee List</h3>
+<ol class="breadcrumb">
+    <li><a href="/">Employee List</a></li>
+</ol>
+<p><a routerLink="/employee/create" class="btn btn-success">Добавить</a></p>
+
+<table class="table table-bordered table-striped"  *ngIf="employeeList$ | async as employeeList; else loader">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>department</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employeeList">
+        <td> {{employee.id}}</td>
+        <td> <a href="#" [routerLink]="['/edit', employee.department.id]">{{employee.department.name}}</a></td>
+        <td> {{employee.firstName}}</td>
+        <td> {{employee.lastName}}</td>
+        <td>
+            <a href="#" [routerLink]="['/employee/view', employee.id]" title="Просмотр"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;
+            <a href="#" [routerLink]="['/employee/edit', employee.id]" title="Редактировать"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+            <a href="#" (click)="deleteEmployee(employee.id)" title="Удалить"><span class="glyphicon glyphicon-trash"></span></a>
+        </td>
+    </tr>
+    </tbody>
+</table>

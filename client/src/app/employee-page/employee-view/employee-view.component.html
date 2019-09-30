@@ -1,0 +1,31 @@
+<div *ngIf="employee">
+    <h3 class="title">Employee view - {{employee.id}}</h3>
+    <ol class="breadcrumb">
+        <li><a href="/" [routerLink]="['/employee']">Employee list</a></li>
+        <li class="active">Employee view - {{employee.id}}</li>
+    </ol>
+    <p>
+        <a class="btn btn-primary" href="/employee/edit/{{employee.id}}" [routerLink]="['/employee/edit', employee.id]">Редактировать</a>&nbsp;
+        <a class="btn btn-danger" href="#" (click)="deleteEmployee(employee.id)">Удалить</a>
+    </p>
+    <table  class="table table-bordered table-striped">
+        <tbody>
+        <tr>
+            <td>ID</td>
+            <td>{{employee.id}}</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>{{employee.department_id}}</td>
+        </tr>
+        <tr>
+            <td>firstName</td>
+            <td>{{employee.firstName}}</td>
+        </tr>
+        <tr>
+            <td>lastName</td>
+            <td>{{employee.lastName}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

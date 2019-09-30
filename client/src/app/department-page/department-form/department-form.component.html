@@ -1,0 +1,50 @@
+
+<h3 class="title">{{isNew ? 'Добавить' : 'Редактировать'}}</h3>
+<ol class="breadcrumb">
+    <li><a href="/" [routerLink]="['/']">department</a></li>
+    <li class="active">{{isNew ? 'Добавить' : 'Редактировать'}}</li>
+</ol>
+<form class="form" role="form" [formGroup]="form" (ngSubmit)="onSubmit()" >
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Название</label>
+            <input
+                    formControlName="name"
+                    id="name"
+                    class="form-control"
+                    type="text"
+                    [ngClass]="{
+                            'is-invalid': form.get('name').invalid && form.get('name').touched,
+                            'is-valid': form.get('name').valid && form.get('name').touched
+                        }"
+            >
+            <span
+                    class="helper-text red-text"
+                    *ngIf="form.get('name').invalid && form.get('name').touched"
+            >
+                    <span *ngIf="form.get('name').errors['required']" class="form-help-text text-danger">
+                                 Имя категории не может быть пустым.
+                     </span>
+             </span>
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea
+                    row="3"
+                    id="todo-text"
+                    class="form-control"
+                    [ngClass]="{
+                             'is-invalid': form.get('description').invalid && form.get('description').touched,
+                             'is-valid': form.get('description').valid && form.get('description').touched
+                        }"
+                    formControlName="description"
+            ></textarea>
+            <span *ngIf="form.get('description').invalid && form.get('description').touched" class="form-help-text text-danger">Описание не может быть пустым.</span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-primary"  [disabled]="form.invalid || form.disabled" type="submit">{{isNew ? 'Добавить' : 'Сохранить'}}</button>
+    </div>
+
+</form>

@@ -1,0 +1,76 @@
+<h3 class="title">{{isNew ? 'Добавить' : 'Редактировать'}}</h3>
+<ol class="breadcrumb">
+    <li><a href="/" [routerLink]="['/employee']">Employee list</a></li>
+    <li class="active">{{isNew ? 'Добавить' : 'Редактировать'}}</li>
+</ol>
+<form class="form" role="form" [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <div class="col-md-6">
+        <div class="form-group">
+        <label class="control-label" for="departments">Выберите отдел</label>
+        <select
+                class="form-control"
+                id="departments"
+                formControlName="department_id"
+        >
+            <option  value="null">---</option>
+            <option *ngFor="let c of departments" value="{{c.id}}">{{c.name}}</option>
+        </select>
+            <span
+                    class="helper-text red-text"
+                    *ngIf="form.get('department_id').invalid && form.get('department_id').touched"
+            >
+                    <span *ngIf="form.get('department_id').errors['required']" class="form-help-text text-danger">
+                                 department_id не может быть пустым.
+                     </span>
+             </span>
+    </div>
+
+        <div class="form-group">
+            <label>firstName</label>
+            <input
+                    formControlName="firstName"
+                    id="firstName"
+                    class="form-control"
+                    type="text"
+                    [ngClass]="{
+                            'is-invalid': form.get('firstName').invalid && form.get('firstName').touched,
+                            'is-valid': form.get('firstName').valid && form.get('firstName').touched
+                        }"
+            >
+            <span
+                    class="helper-text red-text"
+                    *ngIf="form.get('firstName').invalid && form.get('firstName').touched"
+            >
+                    <span *ngIf="form.get('firstName').errors['required']" class="form-help-text text-danger">
+                                 FirstName не может быть пустым.
+                     </span>
+             </span>
+        </div>
+
+        <div class="form-group">
+            <label>lastName</label>
+            <input
+                    formControlName="lastName"
+                    id="lastName"
+                    class="form-control"
+                    type="text"
+                    [ngClass]="{
+                            'is-invalid': form.get('lastName').invalid && form.get('lastName').touched,
+                            'is-valid': form.get('lastName').valid && form.get('lastName').touched
+                        }"
+            >
+            <span
+                    class="helper-text red-text"
+                    *ngIf="form.get('lastName').invalid && form.get('lastName').touched"
+            >
+                    <span *ngIf="form.get('lastName').errors['required']" class="form-help-text text-danger">
+                                 LastName не может быть пустым.
+                     </span>
+             </span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-primary"  [disabled]="form.invalid || form.disabled" type="submit">{{isNew ? 'Добавить' : 'Сохранить'}}</button>
+    </div>
+
+</form>
