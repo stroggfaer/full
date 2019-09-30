@@ -1,6 +1,6 @@
 # full
 Задание test
-Запуск 
-npm run dev  (Фронт + Бекенд)
-npm run client  (Фронт)
-npm run server  (Бекенд)
+Запуск <br>
+npm run dev  (Фронт + Бекенд)<br>
+npm run client  (Фронт)<br>
+npm run server  (Бекенд)<br>
